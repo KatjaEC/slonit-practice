@@ -33,11 +33,11 @@ greeting('Stranger');
 
 ```
 
-\```javascript
+```javascript
 const response = () => {
     console.log('Hello to you too!');
 };
 
 response();
 
-\```
+```
