@@ -32,3 +32,44 @@ const getUniqueValue = (valuesArray) => {
     let randomValue = valuesArray[randomIndex];
     return randomValue;
 };
+
+const initGame = (valueToGuess) => {
+    const initialArray = getUniqueArray(MIN_VALUE, MAX_VALUE);
+    initialArray.sort(function (a, b) {
+        return a - b;
+    });
+    let initialValue = Math.round(initialArray.length/2);
+    let randomValue = getUniqueValue(initialArray);
+    let unusedValues = [...initialArray];
+    unusedValues.splice(unusedValues.indexOf(initialValue), 1);
+    console.log(`Компьютер 2: Пробую число ${initialValue}.`);
+    if (initialValue > valueToGuess) {
+        console.log('Компьютер 1: Меньше.');
+        unusedValues.splice(initialValue - 1, initialValue);
+    } else if (initialValue < valueToGuess) {
+        console.log('Компьютер 1: Больше.');
+        unusedValues.splice(0, initialValue - 1);
+    } else {
+        console.log('Компьютер 1: Угадал!');
+    }
+    while (randomValue !== valueToGuess) {
+        let index = unusedValues.indexOf(randomValue);
+        if (index !== -1) {
+            unusedValues.splice(index, 1);
+        }
+        let newRandomValue = getUniqueValue(unusedValues);
+        randomValue = newRandomValue;
+        console.log(`Компьютер 2: Пробую число ${randomValue}.`);
+        if (randomValue < valueToGuess) {
+            console.log('Компьютер 1: Больше.');
+        } else if (randomValue > valueToGuess) {
+            console.log('Компьютер 1: Меньше.');
+        } else {
+            console.log('Компьютер 1: Угадал!');
+            break;
+        }
+    }
+    return console.log('Игра окончена.');
+};
+
+initGame(30);
