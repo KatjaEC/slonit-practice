@@ -35,9 +35,10 @@ const getUniqueValue = (valuesArray) => {
 
 const initGame = (valueToGuess) => {
     const initialArray = getUniqueArray(MIN_VALUE, MAX_VALUE);
-    initialArray.sort(function (a, b) {
-        return a - b;
-    });
+    // initialArray.sort(function (a, b) {
+    //     return a - b;
+    // });
+    initialArray.sort((a, b) => a - b);
     let initialValue = Math.round(initialArray.length/2);
     let randomValue = getUniqueValue(initialArray);
     let unusedValues = [...initialArray];
