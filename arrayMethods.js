@@ -68,6 +68,66 @@ console.log([...testArray].slice(0, -4));
 console.log(mySliceVerOne(testArray, 0, -4));
 console.log(mySliceVerTwo(testArray, 0, -4));
 
-const myIndexOf = (arr, item, from) => {};
+const testArrayColors = ['black', 'violet', 'red', 'blue', 'green', 'red', 'white', 'yellow', 'tomato'];
 
-const myIncludes = (arr, item, from) => {};
+const myIndexOf = (arr, item, from = 0) => {
+    if (from >= 0) {
+        for (let i = from; i < arr.length; i++) {
+            if (item === arr[i]) {
+                return `index of the item ${item} is ${i}.`;
+            }
+        }
+        return -1;
+    }
+    if (from < 0) {
+        from = from * -1;
+        for (let i = arr.length - 1 - from; i >= 0 ; i--) {
+            if (item === arr[i]) {
+                return `lastIndexOf the item ${item} is: ${i}.`;
+            }
+        }
+        return -1;
+    }
+};
+
+console.log(`index: ${testArrayColors.indexOf('red')}`);
+console.log(`lastIndexOf: ${testArrayColors.lastIndexOf('red')}`);
+console.log(myIndexOf(testArrayColors, 'red', '1'));
+
+// With from
+
+const myIncludes = (arr, item, from = 0) => {
+    if (from >= 0) {
+        for (let i = from; i < arr.length; i++) {
+            if (item === arr[i]) {
+                return true;
+            }
+        }
+        return false;
+    }
+    if (from < 0) {
+        from = from * -1;
+        for (let i = arr.length - 1 - from; i >= 0 ; i--) {
+            if (item === arr[i]) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+};
+
+// Without from
+
+const myIncludesNoFrom = (arr, item) => {
+    for (let value of arr) {
+        if (value = item) {
+            return true;
+        }
+        return false;
+    }
+};
+
+console.log(testArrayColors.includes('green'));
+console.log(myIncludes(testArrayColors, 'green', '-1'));
+console.log(myIncludesNoFrom(testArrayColors, 'green'));
