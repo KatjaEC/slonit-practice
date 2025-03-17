@@ -6,13 +6,13 @@ const getValuesSum = function (valueA, valueB) {
    return valueA + valueB;
 };
 
-const subtractValues = (valueA, valueB) => {
+const subtractValues = function (valueA, valueB) {
    return valueA - valueB;
 };
-const multiplyValues = (valueA, valueB) => {
+const multiplyValues = function (valueA, valueB) {
    return valueA * valueB;
 };
-const divideValues = (valueA, valueB) => {
+const divideValues = function (valueA, valueB) {
    return valueA / valueB;
 };
 
